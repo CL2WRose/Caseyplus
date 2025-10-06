@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasey</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div id="window">
+        <img id="casey" src="Casey.png" alt="It's casey">
+        <audio id="caseyAudio" src="CaseySoundnEIo.mp3" preload="auto"></audio>
+    </div>
+    <script>
+        const hoverElement = document.getElementById('casey');
+        const randomAudioPlayer = document.getElementById('caseyAudio');
+
+        // Array of your audio file paths
+        const audioFiles = [
+            'CaseySoundnEIo.mp3',
+            'CaseySoundnEIo.mp3',
+            'CaseySoundnEIo.mp3'
+        ];
+
+        function playRandomAudio() {
+            // Get a random index from the audioFiles array
+            const randomIndex = Math.floor(Math.random() * audioFiles.length);
+            const randomFile = audioFiles[randomIndex];
+
+            // Set the audio player's source to the random file
+            randomAudioPlayer.src = randomFile;
+
+            // Reset and play the audio
+            randomAudioPlayer.currentTime = 0;
+            randomAudioPlayer.play();
+        }
+
+        function stopAudio() {
+            randomAudioPlayer.pause();
+            randomAudioPlayer.currentTime = 0;
+        }
+
+        // Require at least one click to unlock audio policies
+        document.body.addEventListener('click', () => {
+            console.log("Audio unlocked");
+        }, { once: true });
+
+        hoverElement.addEventListener('mouseover', playRandomAudio);
+        hoverElement.addEventListener('mouseleave', stopAudio);
+
+    </script>
+
+</body>
+
+</html>
